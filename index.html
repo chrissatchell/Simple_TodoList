@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js ie ie8 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9" lang="en"> <![endif]-->
+<!--[if !IE]><!-->     <html class="no-js" lang="en" > <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Todo List</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+    <link rel="stylesheet" href="resources/css/style.css">
+  </head>
+
+  <body>
+    <div class="page">
+
+      <main>
+  			<section id="todos" class="pagination-content">
+          <div class="todo-app">
+            <header>
+    					<h1>Todos</h1>
+    				</header>
+
+            <form method="post">
+              <fieldset class="todo-control">
+                <button type="button" name="add-todo" id="add-todo">
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </button>
+                <input type="text" name="name" placeholder="What needs to be done?" id="new-todo">
+              </fieldset>
+            </form>
+
+            <ul id="todo-list" class="todo-list">
+              <!-- TodoList Items -->
+            </ul>
+          </div>
+  			</section>
+    	</main>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="resources/js/main.js"></script>
+  </body>
+</html>

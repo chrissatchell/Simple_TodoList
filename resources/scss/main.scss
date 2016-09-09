@@ -1,0 +1,374 @@
+// Import partials
+//@import "partials/base";
+//@import "partials/layout";
+//@import "partials/module";
+
+// ==========================================================================
+// HELPERS
+// ==========================================================================
+.outline, .ol {
+  outline: 1px solid limegreen;
+}
+
+//- HTML5 Boilerplate
+.hidden, %hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.invisible, %invisible {
+  visibility: hidden;
+}
+
+.visually-hidden, %visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.focusable, %focusable {
+  &:active, &:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+.clearfix, %clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// ==========================================================================
+// TYPEFACES
+// ==========================================================================
+
+// Gorila
+// @URL http://www.dafont.com/gorila.font
+@font-face {
+  font-family: 'gorilaregular';
+  src: url('/resources/fonts/gorila-webfont.woff2') format('woff2'),
+       url('/resources/fonts/gorila-webfont.woff') format('woff'),
+       url('/resources/fonts/Gorila.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+$gorila: 'gorilaregular';
+
+// Titillium
+// @URL https://fonts.googleapis.com/
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,300);
+$titillium:'Titillium Web', sans-serif;
+
+// Font Awsome
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+
+// ==========================================================================
+// BREAKPOINTS - Media Queries
+// ==========================================================================
+$md-screen: '(max-width: 1400px)';
+$sm-screen: '(max-width: 960px)';
+$xsm-screen: '(max-width: 550px)';
+
+// ==========================================================================
+// Noramlize CSS
+// ==========================================================================
+
+@import "../../bower_components/normalize.css/normalize.css";
+
+// ==========================================================================
+// BASE
+// ==========================================================================
+$tiko_blue: #0163f9; //0163f9
+$stark: #FFF;
+
+// Reset REM units
+html {
+	font-size: 62.5%; // 1rem = 10px, 1.4rem = 14px
+  font-family: $gorila;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  }
+
+html,body,.page,main {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  //min-width: 100%;
+  width: 100%;
+}
+
+form, fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+// Page reset - TESTING
+.page {
+  @media screen and (min-width: 1285px) {
+    max-height: 673px;
+  }
+  @media #{$sm-screen} {
+    height: 100vh;
+  }
+  height: 100%;
+}
+
+// ==========================================================================
+// LAYOUT
+// ==========================================================================
+.left {float: left}
+.right {float: right}
+.relative {
+  position: relative;
+  &-now {position: relative !important;}
+}
+.absolute {
+  position: absolute;
+  &-now {position: absolute !important;}
+}
+
+.block {
+  display: block;
+  &-now {display: block !important;}
+}
+.inline-block {
+  display: inline-block;
+  &-now {display: inline-block !important;}
+}
+.inline {
+  display: inline;
+  &-now {display: inline !important;}
+}
+
+// Flexbox alternative - Hacky but well supported
+.valign-container {
+  writing-mode: vertical-lr;
+  &-child {writing-mode: horizontal-tb;}
+}
+
+// ==========================================================================
+// COMPONENTS
+// ==========================================================================
+nav {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+.page-content {
+	position: relative;
+  width: 100%;
+  height: 100%;
+
+  .pagination-content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    display: none;
+    //&-active { display: block; } // JS - Add or remove class
+    &:target { display: block }
+  }
+}
+
+// Todo List
+#todos {}
+  .todo-app {
+    position: relative;
+    max-width: 525px;
+    margin: 205px auto 0;
+    color: $tiko_blue;
+    font-family: $titillium;
+    @media #{$xsm-screen} {
+      max-width: 92%;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 4.8rem;
+      font-weight: 300;
+      padding-bottom: 3.8rem;
+      margin: 0;
+    }
+  }
+  .todo-control {
+    border: 2px solid $tiko_blue;
+    max-width: 100%;
+    width: 100%;
+    font-size: 3rem;
+    color:$tiko_blue;
+
+    input {
+      border:none;
+      outline: none;
+      color:$tiko_blue;
+      padding: 20px 60px;
+      font-size: 3rem;
+      opacity: 1;
+      height: 3rem;
+      max-width: 100%;
+      width: 75%;
+      line-height: 1;
+      display: inline-block;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+
+      @media #{$xsm-screen} {
+        padding-right: 10px;
+      }
+    }
+    // Placeholders
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      font-size: 3rem;
+      color:$tiko_blue;
+      opacity: 1;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      font-size: 3rem;
+      color:$tiko_blue;
+      opacity: 1;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      font-size: 3rem;
+      color:$tiko_blue;
+      opacity: 1;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      font-size: 3rem;
+      color:$tiko_blue;
+      opacity: 1;
+    }
+
+    button {
+      // NOTE: move to base styles
+      border: none;
+      outline: none;
+      padding: 0;
+      line-height: 1;
+
+      position: absolute;
+      height:auto;
+      top: 29%;
+      left: 20px;
+      background: transparent;
+      font-size: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+  .todo-list {
+    margin: 0;
+    padding:25px 0 0;
+    list-style: none;
+    font-size: 3rem;
+
+    &-item, & > li {
+      border: 2px solid $tiko_blue;
+      border-top: 1px solid $tiko_blue;
+      border-bottom: 1px solid $tiko_blue;
+      padding: 18px 60px;
+      max-width: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    li:first-child {
+      border-top: none;
+      border-top: 2px solid #0163f9;
+    }
+
+    li .close {
+      color: $tiko_blue;
+      font-size: 5rem;
+      line-height: .9;
+      display: block;
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      top: 10%;
+      right: 25px;
+      height: 5rem;
+      width: 20px;
+      opacity: 0;
+      z-index: 10;
+
+      // HACK: Vertical align hack
+      top: -.7rem;
+      height: 100%;
+      text-align: center;
+      writing-mode: vertical-lr;
+
+    }
+
+    li:hover .close {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    li:last-child {border-bottom: 2px solid $tiko_blue;}
+  }
+
+// ==========================================================================
+// STATE
+// ==========================================================================
+body {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  opacity: 0;
+
+  //*duration before delay
+  animation: page-fadein 1.5s ease-in-out 0.5s 1 forwards;
+
+  @at-root {
+    @keyframes page-fadein {
+      from {
+        -webkit-opacity: 0;
+        -moz-opacity: 0;
+        -ms-opacity: 0;
+        -o-opacity: 0;
+        opacity: 0;
+      }
+      to {
+        -webkit-opacity: 1;
+        -moz-opacity: 1;
+        -ms-opacity: 1;
+        -o-opacity: 1;
+        opacity: 1;
+      }
+    }
+  }
+
+}

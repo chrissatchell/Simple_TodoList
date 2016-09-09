@@ -1,0 +1,269 @@
+#main {
+  max-width: 1170px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Header */
+header {
+  padding-top: 12.5px;
+  text-align: center;
+
+  .chris-satchell {
+  	font-size: 6.4rem;
+  	margin: 0;
+  	//display: none;
+
+  	@media (max-width: 768px) {
+			display: block;
+  	}
+  }
+
+  #cs-svg {
+  	@media (max-width: 768px) {
+			display: none;
+  	}
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 4.08rem; //3.7rem;
+    line-height: 1.2;
+    padding: 50px 0 61px;
+    
+    @media (max-width: 480px) {
+      padding: 10px 0 30px;
+      font-size: 2rem;
+      line-height: 1.35;
+    }
+  }
+}//Header
+
+#chris-satchell {
+	max-width: 100%;
+}
+
+//FIX: ios7 Chris Satchell logo 
+//KLUDGE: iOS 7 fix
+.ios7 {
+  &.iMobile {
+    height: 100px;
+  }
+  &.iTab {
+    height: 175px;
+  }
+  #chrissatchell {
+    margin: -20.5px 0 0 0;
+    padding: 0;
+  }
+}
+
+// ui-strip, use with .row
+.ui-strip {
+  @extend %clearfix;
+}
+
+// Button
+.button {
+  color: $standard;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+
+  &:hover {
+    color: $highlight;
+    border-bottom: none;
+    text-decoration: none;
+  }
+}
+
+// SIMPLE MODAL
+section[data-sexy-modal] {
+  display: none;
+  background-color: #FFF;
+  
+  position: fixed;
+  z-index: 6000;
+  height: 97%;
+  width: 96%;
+
+  left: 50%;
+  top: 50%;
+
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  -moz-transform: translate(-50%, -50%) scale(1);
+  -ms-transform: translate(-50%, -50%) scale(1);
+  -o-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+  
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  @media (#{$screen-sm}) {
+    max-width: 725px;
+    width: 100%;
+  }
+}
+
+.sexy-overlay {
+  display: none;
+  opacity: 0.25;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  position: fixed;
+  background-color: black;
+  top: 0;
+  left: 0;
+}
+
+.sexy-close-btn {
+	text-decoration: none;
+  line-height: 1;
+	padding: 5px 8px;
+	color: #333;
+	position: fixed;
+	top: 14px;
+	right: 2%;
+	cursor: pointer;
+  font-weight: 100;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  z-index: 7000;
+  display: none;
+
+  @media (#{$screen-sm}) {
+  	font-size: 4rem;
+    color: #FFF;
+    top: 6px;
+  }
+  
+  .ios7.iMobile & {
+    top: 4px;
+  }
+
+  @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px) 
+  and (orientation : portrait)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    color: #333;
+    position: fixed;
+    top: 14px;
+    right: 3%;
+    cursor: pointer;
+    font-weight: 100;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+
+}
+
+// PROJECTS MODAL
+#modal {
+  padding: 20px;
+}
+.modal-header {
+  padding: 0;
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 6rem;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+}
+
+.project-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  &-item {
+    padding: 0;
+    margin: 0;
+
+    & > :first-child {
+      margin: 0 0 25px 0; 
+      border-bottom: 3px solid $standard; 
+    }
+
+    &:last-child > :first-child {
+      border-bottom: none; 
+    }
+  }
+}
+.project {
+  margin: 0 0 5px 0; 
+  line-height: 1.05; 
+  font-size: 2.7rem; 
+}
+.client {
+  margin: 0; 
+  line-height: 1; 
+  font-size: 1.4rem; 
+  font-style: italic; 
+}
+.description {
+  font-size: 1.9rem;
+  line-height: 1.4;
+}
+.note {
+  color: $highlight;
+  font-size: 1.4rem;
+  margin-top: -18px;
+}
+.no-link {
+	cursor: default;
+}
+
+// DETAILS
+#chris-satchell-details {
+  section h1 {
+    margin-top: 0;
+    padding-top: 20px;
+  }
+
+  @for $i from 1 through 3 {
+    
+    > section:nth-child(#{$i}) h1 {
+      
+      @if $i == 1 {
+        @include border-color($pronouned);
+      }
+      
+      @else if $i == 2 {
+        @include border-color($dull);
+      }
+      
+      @else if $i == 3 {
+        @include border-color($highlight);
+      }
+      
+    }//sectiom:nth-child
+  }//@for 
+}//#chris-satchell-details
+
+
+// WORK
+#chris-satchell-work {
+  section { 
+    //.project-list-item:first-child 
+  }
+  h1 { 
+    //.project 
+  }
+  h2 { 
+    //.cleint 
+  }
+  a {}
+  p {}
+  h1 a {}
+  h2 a {}
+  
+  .client {}
+  .agency {}
+  .description {}
+}
